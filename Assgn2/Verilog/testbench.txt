@@ -1,0 +1,41 @@
+module testbench;
+
+  // Define the signals for the testbench
+  reg [7:0] A, B;
+  reg Cin;
+  wire [7:0] Sum;
+  wire Cout;
+
+  // Instantiate the carry-select adder
+  carry_select_adder uut (
+    .A(A),
+    .B(B),
+    .Cin(Cin),
+    .Sum(Sum),
+    .Cout(Cout)
+  );
+
+  // Initialize testbench signals
+  initial begin
+    $dumpfile("carry_select_adder.vcd");
+    $dumpvars(0, testbench);
+
+    // Test case 1: A = 4, B = 5, Cin = 0
+    A = 4;
+    B = 5;
+    Cin = 0;
+    #10 $display("Test Case 1: A = %d, B = %d, Cin = %d, Sum = %d, Cout = %d", A, B, Cin, Sum, Cout);
+
+    // Test case 2: A = 255, B = 1, Cin = 1
+    A = 255;
+    B = 1;
+    Cin = 1;
+    #10 $display("Test Case 2: A = %d, B = %d, Cin = %d, Sum = %d, Cout = %d", A, B, Cin, Sum, Cout);
+
+    // Add more test cases here
+
+    // Finish simulation
+    $finish;
+  end
+
+endmodule

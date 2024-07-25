@@ -1,0 +1,35 @@
+`timescale 1ns / 1ps
+// module mux2to1_tb();
+// reg A,B,Sel;
+// wire Y;
+//   mux2to1 dut(A,B,Sel,Y);
+
+module ripple_carry_adder_tb();
+  reg [3:0] A,B;
+  reg Cin;
+  wire [3:0]Sum;
+  wire Cout;
+  
+  ripple_carry_adder dut(A,B,Cin,Sum,Cout);
+
+initial begin
+  $dumpfile("dump.vcd");
+  $dumpvars(1);
+end
+  
+initial
+begin
+  
+//   {A,B,Cin}=9'b001100101;
+//   {A,B,Cin}=9'b011000101;
+  /*
+  {A,B,Sel}=3'd0;
+#10 {A,B,Sel}=3'd1;
+#10 {A,B,Sel}=3'd2;
+#10 {A,B,Sel}=3'd3;
+#10 {A,B,Sel}=3'd4;
+#10 {A,B,Sel}=3'd5;
+#10 {A,B,Sel}=3'd6;
+#10 {A,B,Sel}=3'd7;*/
+end
+endmodule

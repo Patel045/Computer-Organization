@@ -1,0 +1,36 @@
+`timescale 1ns / 1ps
+
+module testbench;
+  
+  reg [7:0] A, B;
+  reg Cin;
+  wire [7:0] Sum;
+  wire Cout;
+
+  carry_select_adder uut (
+    .A(A),
+    .B(B),
+    .Sel(Cin),
+    .Sum(Sum),
+    .Cout(Cout)
+  );
+
+  initial begin
+    $dumpfile("carry_select_adder.vcd");
+    $dumpvars(0, testbench);
+
+    // Test case 1: A = 4, B = 5, Cin = 0
+    A = 4;
+    B = 5;
+    Cin = 0;
+    #1 $display("Test Case 1: A = %d, B = %d, Cin = %d, Sum = %d, Cout = %d", A, B, Cin, Sum, Cout);
+
+    // Test case 2: A = 153, B = 43, Cin = 1
+    A = 153;
+    B = 43;
+    Cin = 1;
+    #1 $display("Test Case 2: A = %d, B = %d, Cin = %d, Sum = %d, Cout = %d", A, B, Cin, Sum, Cout);
+
+    $finish;
+  end
+endmodule
